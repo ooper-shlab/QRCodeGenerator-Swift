@@ -13,8 +13,6 @@
 		D72D7D0D1AF9BE6000A00563 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D72D7D0C1AF9BE6000A00563 /* Images.xcassets */; };
 		D72D7D101AF9BE6000A00563 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D72D7D0E1AF9BE6000A00563 /* LaunchScreen.xib */; };
 		D72D7D1C1AF9BE6000A00563 /* QRCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D7D1B1AF9BE6000A00563 /* QRCodeGeneratorTests.swift */; };
-		D72D7D2B1AF9CFB000A00563 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72D7D291AF9CFB000A00563 /* LICENSE.txt */; };
-		D72D7D2C1AF9CFB000A00563 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D72D7D2A1AF9CFB000A00563 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72D7D2B1AF9CFB000A00563 /* LICENSE.txt in Resources */,
 				D72D7D0B1AF9BE6000A00563 /* Main.storyboard in Resources */,
 				D72D7D101AF9BE6000A00563 /* LaunchScreen.xib in Resources */,
 				D72D7D0D1AF9BE6000A00563 /* Images.xcassets in Resources */,
@@ -219,7 +216,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72D7D2C1AF9CFB000A00563 /* README.md in Sources */,
 				D72D7D081AF9BE6000A00563 /* ViewController.swift in Sources */,
 				D72D7D061AF9BE6000A00563 /* AppDelegate.swift in Sources */,
 			);
@@ -419,6 +415,7 @@
 				D72D7D211AF9BE6000A00563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D72D7D221AF9BE6000A00563 /* Build configuration list for PBXNativeTarget "QRCodeGeneratorTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +424,7 @@
 				D72D7D241AF9BE6000A00563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
