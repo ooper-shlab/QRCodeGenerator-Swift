@@ -28,14 +28,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let text = NSUserDefaults.standardUserDefaults().stringForKey("text")
             ?? "http://oopers.com"
         textField.text = text
-        var size = imageView.frame.size
+        let size = imageView.frame.size
         let image = QRCodeImage(text, size: size)
         imageView.image = image
     }
     
     @IBAction func updateAndSave(AnyObject) {
         let text = textField.text ?? ""
-        var size = imageView.frame.size
+        let size = imageView.frame.size
         let image = QRCodeImage(text, size: size)
         imageView.image = image
         //
@@ -56,14 +56,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             "inputMessage": data,
             "inputCorrectionLevel": "H"
         ]
-        var qrEncoder = CIFilter(name: "CIQRCodeGenerator", withInputParameters: params)
-        let ciImage: CIImage = qrEncoder.outputImage
+        let qrEncoder = CIFilter(name: "CIQRCodeGenerator", withInputParameters: params)
+        let ciImage: CIImage = qrEncoder!.outputImage
         var image = UIImage(CIImage: ciImage)
         //
         UIGraphicsBeginImageContext(size);
         let context = UIGraphicsGetCurrentContext();
-        CGContextSetInterpolationQuality(context, kCGInterpolationNone)//
-        image!.drawInRect(CGRect(origin: CGPoint(), size: size))
+        CGContextSetInterpolationQuality(context, CGInterpolationQuality.None)//
+        image.drawInRect(CGRect(origin: CGPoint(), size: size))
         image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return image
