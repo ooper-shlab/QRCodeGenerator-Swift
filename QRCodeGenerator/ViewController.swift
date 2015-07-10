@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         imageView.image = image
     }
     
-    @IBAction func updateAndSave(AnyObject) {
+    @IBAction func updateAndSave(_: AnyObject) {
         let text = textField.text ?? ""
         let size = imageView.frame.size
         let image = QRCodeImage(text, size: size)
