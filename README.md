@@ -9,8 +9,8 @@ Inspired by this article
 (Also inpired by a person in the Apple's dev forum, as it's a member-only service, I won't show the link.) 
 
 ===========================================================================
-BUILD REQUIREMENTS:
+## BUILD REQUIREMENTS:
 
-Xcode 8.1, iOS SDK 10
+Xcode 9 beta 3, iOS SDK 11
 
 ===========================================================================

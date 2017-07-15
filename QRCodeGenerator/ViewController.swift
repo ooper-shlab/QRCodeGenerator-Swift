@@ -62,7 +62,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //
         UIGraphicsBeginImageContext(size);
         let context = UIGraphicsGetCurrentContext();
-        context!.interpolationQuality = CGInterpolationQuality.none//
+        context!.interpolationQuality = .none//
         image.draw(in: CGRect(origin: CGPoint(), size: size))
         image = UIGraphicsGetImageFromCurrentImageContext()!;
         UIGraphicsEndImageContext();
