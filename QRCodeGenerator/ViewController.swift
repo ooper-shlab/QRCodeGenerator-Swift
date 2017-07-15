@@ -3,11 +3,11 @@
 //  QRCodeGenerator
 //
 //  Created by OOPer in cooperation with shlab.jp, on 2015/5/6.
-//  Copyright (c) 2015-2016 OOPer. All rights reserved. See LICENSE.txt .
+//  Copyright (c) 2015-2017 OOPer. All rights reserved. See LICENSE.txt .
 //
 
 import UIKit
-import AssetsLibrary
+import Photos
 
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         textField.delegate = self
+        requestPhotoLibraryAuthentication()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +43,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UserDefaults.standard.setValue(text, forKey: "text")
         UserDefaults.standard.synchronize()
         //
-        ALAssetsLibrary().writeImage(toSavedPhotosAlbum: image?.cgImage, orientation: ALAssetOrientation.up, completionBlock: nil)
+        PHPhotoLibrary.shared().performChanges({
+            _ = PHAssetChangeRequest.creationRequestForAsset(from: image!)
+        }, completionHandler: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -50,8 +53,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    func QRCodeImage(_ message: String, size: CGSize) -> UIImage? {
-        let data: Data = message.data(using: String.Encoding.utf8)!
+    private func QRCodeImage(_ message: String, size: CGSize) -> UIImage? {
+        let data: Data = message.data(using: .utf8)!
         let params = [
             "inputMessage": data,
             "inputCorrectionLevel": "H"
@@ -61,12 +64,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var image = UIImage(ciImage: ciImage)
         //
         UIGraphicsBeginImageContext(size);
-        let context = UIGraphicsGetCurrentContext();
+        let context = UIGraphicsGetCurrentContext()
         context!.interpolationQuality = .none//
-        image.draw(in: CGRect(origin: CGPoint(), size: size))
-        image = UIGraphicsGetImageFromCurrentImageContext()!;
+        image.draw(in: CGRect(origin: .zero, size: size))
+        image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext();
         return image
+    }
+
+    //### request for PhotoLibrary authentication (simplified)
+    private func requestPhotoLibraryAuthentication() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization {status in
+                //### For practical usage, show alert, update UI, guide to settings...
+            }
+        default:
+            break
+        }
     }
 }
 

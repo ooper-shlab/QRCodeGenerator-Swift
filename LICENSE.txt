@@ -1,5 +1,5 @@
 QRCodeGenerator: A simple example of QR Code generator using CIFilter.
-Version:  1.0 (s4)
+Version:  1.0 (s4a1)
 
 QRコード or QR Code is a registered trademark of DENSO WAVE INCORPORATED in Japan and in other countries.
 
