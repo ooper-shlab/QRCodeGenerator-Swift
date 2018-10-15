@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             "inputMessage": data,
             "inputCorrectionLevel": "H"
         ] as [String : Any]
-        let qrEncoder = CIFilter(name: "CIQRCodeGenerator", withInputParameters: params)
+        let qrEncoder = CIFilter(name: "CIQRCodeGenerator", parameters: params)
         let ciImage: CIImage = qrEncoder!.outputImage!
         var image = UIImage(ciImage: ciImage)
         //
